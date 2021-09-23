@@ -33,7 +33,7 @@ if(isset($_POST['token'])) {
 
       //Recipients
       $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mail API');
-      $mail->addAddress('fabervergara@gmail.com');     //Add a recipient
+      $mail->addAddress('ambacar-35436f-body-poem@leads.getsirena.com');     //Add a recipient
 
       //Content
       $mail->Subject = 'Sirena - Email Estándar';
