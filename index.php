@@ -13,14 +13,7 @@ $dotenv->load();
 if(isset($_POST['token'])) {
   if($_POST['token'] == 'fffad1e120d91edc688ab07699605c04') {
     try {
-      $message = "Nombre completo: {$_POST['names']} \n
-      Email: {$_POST['email']} \n
-      Telefono: {$_POST['phone']} \n
-      Cedula: {$_POST['cedula']} \n
-      Version: {$_POST['version']} \n
-      Concesionario: {$_POST['agency']} \n
-      Industria: car  \n
-      Origen: amplif";
+      $message = "Nombre completo: {$_POST['names']} \nEmail: {$_POST['email']} \nTelefono: {$_POST['phone']} \nCedula: {$_POST['cedula']} \nVersion: {$_POST['version']} \nConcesionario: {$_POST['agency']} \nIndustria: car  \nOrigen: amplif";
 
       //Server settings
       $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
