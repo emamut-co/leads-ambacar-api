@@ -6,6 +6,10 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 require 'json-response.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: X-Requested-With");
+
 $mail = new PHPMailer(true);
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
