@@ -32,8 +32,8 @@ if(isset($_POST['token'])) {
       $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
       //Recipients
-      $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mailer');
-      $mail->addAddress('fabervergara@gmail.com');     //Add a recipient
+      $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mail API');
+      $mail->addAddress('test@development.getsirena.com');     //Add a recipient
 
       //Content
       $mail->Subject = 'Sirena - Email Estándar';
