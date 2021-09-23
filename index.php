@@ -24,23 +24,19 @@ if(isset($_POST['token'])) {
       //Server settings
       $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
       $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+      $mail->Host       = 'smtp.administracionedificiosiad.com';                     //Set the SMTP server to send through
       $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'user@example.com';                     //SMTP username
-      $mail->Password   = 'secret';                               //SMTP password
+      $mail->Username   = 'webmaster@administracionedificiosiad.com';                     //SMTP username
+      $mail->Password   = '80{EyyseBDnp';                               //SMTP password
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
       $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
       //Recipients
-      $mail->setFrom('from@example.com', 'Mailer');
-      $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-      $mail->addAddress('ellen@example.com');               //Name is optional
-      $mail->addReplyTo('info@example.com', 'Information');
-      $mail->addCC('cc@example.com');
-      $mail->addBCC('bcc@example.com');
+      $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mailer');
+      $mail->addAddress('fabervergara@gmail.com', 'Joe User');     //Add a recipient
 
       //Content
-      $mail->Subject = 'Here is the subject';
+      $mail->Subject = 'Sirena - Email Estándar';
       $mail->Body    = $message;
 
       $mail->send();
