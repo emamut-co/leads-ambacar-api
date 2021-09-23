@@ -15,9 +15,9 @@ if(isset($_POST['token'])) {
     try {
       $message = "Nombre completo: {$_POST['names']} \n
       Email: {$_POST['email']} \n
-      Teléfono: {$_POST['phone']} \n
-      Cédula: {$_POST['cedula']} \n
-      Versión: {$_POST['version']} \n
+      Telefono: {$_POST['phone']} \n
+      Cedula: {$_POST['cedula']} \n
+      Version: {$_POST['version']} \n
       Concesionario: {$_POST['agency']} \n
       Industria: car  \n
       Origen: amplif";
