@@ -27,13 +27,13 @@ if(isset($_POST['token'])) {
       $mail->Host       = 'mail.administracionedificiosiad.com';                     //Set the SMTP server to send through
       $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
       $mail->Username   = 'webmaster@administracionedificiosiad.com';                     //SMTP username
-      $mail->Password   = '80{EyyseBDnp';                               //SMTP password
+      $mail->Password   = 'j%okGxtDr;6n';                               //SMTP password
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
       $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
       //Recipients
       $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mailer');
-      $mail->addAddress('fabervergara@gmail.com', 'Joe User');     //Add a recipient
+      $mail->addAddress('fabervergara@gmail.com');     //Add a recipient
 
       //Content
       $mail->Subject = 'Sirena - Email Estándar';
