@@ -17,27 +17,25 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 if(isset($_POST['token'])) {
-  if($_POST['token'] == 'fffad1e120d91edc688ab07699605c04') {
+  if($_POST['token'] == $_ENV['POST_TOKEN']) {
     try {
-      $message = "Nombre completo: {$_POST['names']} \nEmail: {$_POST['email']} \nTelefono: {$_POST['phone']} \nCedula: {$_POST['cedula']} \nVersion: {$_POST['version']} \nConcesionario: {$_POST['agency']} \nIndustria: car  \nOrigen: amplif";
-
       //Server settings
       $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
       $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'mail.administracionedificiosiad.com';                     //Set the SMTP server to send through
+      $mail->Host       = $_ENV['HOST_NAME'];                     //Set the SMTP server to send through
       $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'webmaster@administracionedificiosiad.com';                     //SMTP username
+      $mail->Username   = $_ENV['USER_NAME'];                     //SMTP username
       $mail->Password   = $_ENV['SMT_PASSWORD'];                               //SMTP password
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+      $mail->Port       = $_ENV['PORT'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
       //Recipients
-      $mail->setFrom('webmaster@administracionedificiosiad.com', 'Mail API');
-      $mail->addAddress('ambacar-35436f-body-poem@leads.getsirena.com');     //Add a recipient
+      $mail->setFrom($_ENV['USER_NAME'], 'Mail API');
+      $mail->addAddress($_POST['emailTo']);     //Add a recipient
 
       //Content
-      $mail->Subject = 'Sirena - Email Estándar';
-      $mail->Body    = $message;
+      $mail->Subject = $_POST['subject'];
+      $mail->Body    = $_POST['message'];
 
       $mail->send();
       json_response(200, 'Message has been sent');
@@ -45,4 +43,6 @@ if(isset($_POST['token'])) {
       json_response(500, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
     }
   }
+  else
+    json_response(401, 'Invalid token');
 }
