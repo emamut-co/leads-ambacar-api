@@ -6,12 +6,6 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 require 'json-response.php';
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Max-Age: 1000");
-header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
-header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE");
-
 $mail = new PHPMailer(true);
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -32,6 +26,7 @@ if(isset($_POST['token'])) {
       //Recipients
       $mail->setFrom($_ENV['USER_NAME'], 'Mail API');
       $mail->addAddress($_POST['emailTo']);     //Add a recipient
+	  $mail->addReplyTo($_POST['email'], $_POST['names']);
 
       //Content
       $mail->Subject = $_POST['subject'];
@@ -46,3 +41,5 @@ if(isset($_POST['token'])) {
   else
     echo json_response(401, 'Invalid token');
 }
+else
+	echo json_response(401, 'No token');
