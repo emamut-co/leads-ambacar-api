@@ -32,6 +32,7 @@ if(isset($_POST['token'])) {
       //Recipients
       $mail->setFrom($_ENV['USER_NAME'], 'Mail API');
       $mail->addAddress($_POST['emailTo']);     //Add a recipient
+	  $mail->addReplyTo($_POST['email'], $_POST['names']);
 
       //Content
       $mail->Subject = $_POST['subject'];
