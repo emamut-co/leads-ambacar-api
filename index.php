@@ -38,11 +38,11 @@ if(isset($_POST['token'])) {
       $mail->Body    = $_POST['message'];
 
       $mail->send();
-      json_response(200, 'Message has been sent');
+      echo json_response(200, 'Message has been sent');
     } catch (Exception $e) {
-      json_response(500, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+      echo json_response(500, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
     }
   }
   else
-    json_response(401, 'Invalid token');
+    echo json_response(401, 'Invalid token');
 }
